@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Split-brain",
+    "description": "Clone the current chat into a visible sibling agent at the last completed turn, run its task immediately without queueing, then merge both sides' conclusions and file changes with a conflict list. Splitting is opt-in by default: only genuinely independent parallel work may split, and every model-initiated split must pass the splitGate (reason, no nested split, one open group at a time)."
+  }
+}

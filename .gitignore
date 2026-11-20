@@ -1,0 +1,33 @@
+# 依赖
+node_modules/
+.npm/
+yarn-error.log
+
+# 日志
+logs/
+*.log
+
+# 构建 / 测试产物
+dist/
+build/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# 运行时与临时数据
+output/
+.tmp/
+tmp/
+
+# 本地覆盖配置（可能含 token，别提交）
+.env
+.env.*
+*.local
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,43 @@
+{
+  "name": "@local/dsh-split-brain",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "脑裂 Split-brain：把当前对话在最后一个已完成轮次处克隆成可见的独立会话（半球），任务直接执行不排队，两边收口后合并结论与文件改动面并列出冲突。默认不脑裂：只有互相独立的并行才分，split 有可执行闸门（autoTrigger + reason + 递归与叠组拦截）。",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "icon": "./icon.svg",
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "split-brain",
+    "fork",
+    "merge",
+    "parallel-agents"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-ui-session"]
+    }
+  }
+}

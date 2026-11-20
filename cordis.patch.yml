@@ -1,0 +1,27 @@
+# 脑裂 Split-brain：Host 半边（在最后一个已完成轮次处劈出可见半球、直接投递任务、合并与冲突面）
+#   + 浏览器半边（输入框下方的半球条），由 package.json 的 dsh.client 声明加载。
+#
+# 想调参数就在 config 里加这些键（代码里带默认值合并，未声明的键会被忽略）：
+#   maxBranches: 4          # 一次分裂最多几个半球
+#   labelPrefix: '⨯'         # 半球会话标题里的血缘标记
+#   resultCharBudget: 4000   # 合并报告里每份结论的截断长度
+#   mergeTimeoutMs: 600000   # 合并前等待半球收口的上限（毫秒）；0 = 不等
+#   isolation: 'shared'      # shared = 共用工作目录；worktree = 每个半球一套 git worktree
+#   policy: 'append'         # append | synthesize | vote
+#   briefingExtra: ''        # 追加到每份半球简报末尾的项目纪律
+#   autoTrigger: 'ask'       # 触发闸门（只拦 split；status/merge/abort 永远放行）
+#                            #   ask    = 模型可自发分裂，但 split_brain 必须带 reason（为什么各路互相独立）
+#                            #   manual = 模型一律不自发分裂，只有人按 /split 才开半球
+#                            #   off    = 连 /split 也关掉，本 profile 不用脑裂
+#   allowNestedSplit: false  # 半球内部能否再劈下一级（默认拒成 branch-no-resplit）
+# 例：
+# - insert:
+#     - id: dsh-split-brain
+#       name: '@local/dsh-split-brain'
+#       config:
+#         isolation: 'worktree'
+#         policy: 'synthesize'
+#         autoTrigger: 'manual'
+- insert:
+    - id: dsh-split-brain
+      name: '@local/dsh-split-brain'
